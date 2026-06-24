@@ -4,6 +4,7 @@ var peer = null;
 var conn = null;
 var inviteCode = '';
 var isHost = false;
+var connected = false;
 var burnTimers = {};
 var localMessages = [];
 var SALT_LEN = 16;
@@ -104,7 +105,16 @@ function createRoom() {
     peer.on('connection', function(incomingConn) {
       conn = incomingConn;
       setupConnection(conn);
-      showChatUI(name);
+      // Wait for data channel to fully open
+      if (incomingConn.open) {
+        connected = true;
+        showChatUI(name);
+      } else {
+        incomingConn.on('open', function() {
+          connected = true;
+          showChatUI(name);
+        });
+      }
     });
 
     peer.on('error', function(err) {
@@ -150,7 +160,6 @@ function joinRoom() {
     return;
   }
 
-  // Parse invite code - format: inviteCode:saltB64
   var parts = code.split(':');
   var roomInvite = parts[0];
   var saltB64 = parts.slice(1).join(':');
@@ -186,6 +195,7 @@ function joinRoom() {
 
       conn.on('open', function() {
         setupConnection(conn);
+        connected = true;
         showChatUI('');
       });
 
@@ -200,7 +210,7 @@ function joinRoom() {
     });
 
     setTimeout(function() {
-      if (!conn || !conn.open) {
+      if (!connected) {
         if (document.getElementById('chatRoom').style.display !== 'none') {
           setStatus('❌ Timeout. Is the host online?');
         }
@@ -224,7 +234,7 @@ function setupConnection(c) {
       }
     } catch(e) {}
   });
-  c.on('close', function() { setStatus('❌ Disconnected'); });
+  c.on('close', function() { setStatus('❌ Disconnected'); connected = false; });
 }
 
 function sendMessage() {
@@ -236,7 +246,11 @@ function sendMessage() {
 
   encryptText(cryptoKey, text).then(function(ct) {
     var pkt = { type: 'msg', id: generateId(), author: nickname, ct: ct, time: Date.now(), burn: burn };
-    if (conn && conn.open) conn.send(JSON.stringify(pkt));
+    try {
+      if (conn) conn.send(JSON.stringify(pkt));
+    } catch(e) {
+      // send failed silently — still show locally
+    }
 
     decryptText(cryptoKey, ct).then(function(pt) {
       localMessages.push({ id: pkt.id, author: nickname, plaintext: pt, time: pkt.time, burn: burn });
@@ -277,6 +291,7 @@ function scheduleBurn(msgId) {
 }
 
 function leaveRoom() {
+  connected = false;
   if (conn) { try { conn.close(); } catch(e) {} conn = null; }
   if (peer) { try { peer.destroy(); } catch(e) {} peer = null; }
   for (var k in burnTimers) { clearTimeout(burnTimers[k]); delete burnTimers[k]; }
