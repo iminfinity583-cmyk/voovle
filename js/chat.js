@@ -285,7 +285,12 @@ function leaveRoom() {
   document.getElementById('chatRoom').style.display = 'none';
   document.getElementById('chatInput').value = '';
   document.getElementById('chatInput').disabled = true;
+  document.getElementById('createInviteInput').value = '';
+  document.getElementById('roomNameInput').value = '';
+  document.getElementById('nickInput').value = '';
   document.getElementById('roomPassInput').value = '';
+  document.getElementById('inviteCodeInput').value = '';
+  document.getElementById('joinNickInput').value = '';
   document.getElementById('joinPassInput').value = '';
 }
 
