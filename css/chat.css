@@ -316,3 +316,16 @@
 .answer-input-area .primary-btn:hover {
   background: #1557b0;
 }
+
+.invite-url-display {
+  background: #f8f9fa;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 8px 0;
+  font-family: monospace;
+  font-size: 12px;
+  word-break: break-all;
+  user-select: all;
+  color: #1a73e8;
+}
