@@ -250,3 +250,23 @@
   font-size: 12px;
   padding: 4px 0;
 }
+
+.burn-label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  cursor: pointer;
+  color: #5f6368;
+  user-select: none;
+}
+
+.burn-label input {
+  width: 16px;
+  height: 16px;
+}
+
+.burn-indicator {
+  font-size: 11px;
+  vertical-align: super;
+}
