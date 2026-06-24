@@ -270,3 +270,49 @@
   font-size: 11px;
   vertical-align: super;
 }
+
+.invite-code-display {
+  background: #f8f9fa;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 8px 0;
+  font-family: monospace;
+  font-size: 12px;
+  word-break: break-all;
+  user-select: all;
+  color: #202124;
+}
+
+.answer-input-area {
+  padding: 12px;
+  text-align: center;
+}
+
+.answer-input-area textarea {
+  width: 100%;
+  font-size: 12px;
+  padding: 8px;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  background: #f8f9fa;
+  color: #202124;
+  resize: none;
+  word-break: break-all;
+  margin-bottom: 8px;
+  box-sizing: border-box;
+}
+
+.answer-input-area .primary-btn {
+  background: #1a73e8;
+  color: #fff;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 24px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.answer-input-area .primary-btn:hover {
+  background: #1557b0;
+}
