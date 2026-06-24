@@ -23,4 +23,23 @@ document.addEventListener('DOMContentLoaded', function() {
       e.preventDefault();
     }
   });
+
+  const loginForm = document.getElementById('loginForm');
+  if (loginForm) {
+    loginForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const msg = document.getElementById('loginMessage');
+      if (!email || !password) {
+        msg.textContent = 'Please enter email and password.';
+      } else {
+        msg.style.color = '#188038';
+        msg.textContent = 'Signed in successfully! Redirecting...';
+        setTimeout(function() {
+          window.location.href = 'index.html';
+        }, 1500);
+      }
+    });
+  }
 });

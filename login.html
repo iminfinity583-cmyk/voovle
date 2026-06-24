@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign in - Voovle</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html">Vmail</a>
+      <a href="index.html">Images</a>
+      <a href="#" class="apps-btn" aria-label="Voovle apps">
+        <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M6,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2z"/></svg>
+      </a>
+    </nav>
+  </header>
+
+  <main class="login-main">
+    <div class="login-card">
+      <div class="login-logo">
+        <span class="voovle-dot">V</span>
+      </div>
+      <h1>Sign in</h1>
+      <p class="login-subtitle">to continue to Voovle</p>
+      <form id="loginForm">
+        <div class="input-group">
+          <input type="email" id="email" placeholder=" " required>
+          <label for="email">Email or phone</label>
+        </div>
+        <div class="input-group">
+          <input type="password" id="password" placeholder=" " required>
+          <label for="password">Password</label>
+        </div>
+        <a href="#" class="forgot-link">Forgot password?</a>
+        <div class="login-actions">
+          <a href="index.html" class="create-btn">Create account</a>
+          <button type="submit" class="next-btn">Next</button>
+        </div>
+      </form>
+      <div id="loginMessage" class="login-message"></div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-bottom login-footer">
+      <div class="footer-left">
+        <a href="#">Help</a>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/scripts.js"></script>
+</body>
+</html>
