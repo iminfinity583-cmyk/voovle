@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vmail - Voovle</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/vmail.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="vmail.html" style="color:#0b57d0;font-weight:600">Vmail</a>
+      <a href="index.html">Images</a>
+      <a href="#" class="apps-btn" aria-label="Voovle apps">
+        <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M6,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2z"/></svg>
+      </a>
+      <a href="login.html" class="sign-in-btn">Sign in</a>
+    </nav>
+  </header>
+
+  <div class="vmail-layout">
+    <aside class="vmail-sidebar">
+      <button class="compose-btn" onclick="document.getElementById('composeModal').style.display='flex'">+ Compose</button>
+      <div class="folder-list">
+        <a href="#" class="folder active"><span>&#9679;</span> Inbox</a>
+        <a href="#" class="folder"><span>&#9734;</span> Starred</a>
+        <a href="#" class="folder"><span>&#9654;</span> Sent</a>
+        <a href="#" class="folder"><span>&#128473;</span> Drafts</a>
+        <a href="#" class="folder"><span>&#128465;</span> Trash</a>
+      </div>
+      <div class="sidebar-chat">
+        <span>&#128172;</span> <a href="secret-chat.html">Secret Chat</a>
+      </div>
+    </aside>
+    <main class="vmail-main">
+      <div class="vmail-toolbar">
+        <span class="select-all"><input type="checkbox"></span>
+        <span class="toolbar-text">Inbox</span>
+        <span class="email-count" id="emailCount">0 emails</span>
+      </div>
+      <div class="email-list" id="emailList">
+        <div class="email-empty">
+          <p>No emails yet. Compose one!</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal" id="composeModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span>New Message</span>
+        <span class="close-btn" onclick="document.getElementById('composeModal').style.display='none'">&times;</span>
+      </div>
+      <div class="modal-body">
+        <input type="email" id="composeTo" placeholder="To">
+        <input type="text" id="composeSubject" placeholder="Subject">
+        <textarea id="composeBody" placeholder="Write your message..."></textarea>
+      </div>
+      <div class="modal-footer">
+        <button class="send-btn" onclick="sendEmail()">Send</button>
+        <button class="draft-btn" onclick="document.getElementById('composeModal').style.display='none'">Discard</button>
+      </div>
+      <p id="composeMsg" class="compose-msg"></p>
+    </div>
+  </div>
+
+  <script src="js/scripts.js"></script>
+  <script src="js/vmail.js"></script>
+</body>
+</html>
